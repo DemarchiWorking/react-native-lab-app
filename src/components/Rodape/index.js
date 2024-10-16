@@ -20,7 +20,7 @@ export default function Footer({ icon })
             </TouchableOpacity>
 
             <Text style={styles.text}>
-                Lista de Desenvolvedorrrrr
+                Negocios Digitais
             </Text>
         </View>
     )

@@ -1,15 +1,24 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 
 import iconDefault from '../../assets/blog.png'
 import styles from './styles';
-export default function PublicacaoCard()
+export default function PublicacaoCard({ titulo, foto, conteudo, dataPublicacao, concluida })
 {
     return (
-        <TouchableOpacity>
-        <View style={ styles.header}>
+        <TouchableOpacity style={[styles.card, concluida &&  styles.cartaoFinalizado]}>
+        <View style={styles.cardEsquerdo}>
             <Image source={iconDefault} style={styles.tipoAtivo}/>
-            <Text> Projeto </Text>
+            <ScrollView style={styles.containerLinha}>
+   
+            <Text style={styles.cardTitulo}> {titulo} </Text>
+            <Text> {conteudo} </Text>
+            </ScrollView>
+
+            </View>
+        <View style={styles.cardDireito}>
+            <Text style={styles.cardData}> 07/10/2024 </Text>
+            <Text style={styles.cardHora}> 10:00 </Text>
         </View>
         </TouchableOpacity>
     )

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     text: {
          position: 'relative',
          top: -30,
-         color: 'red'
+         color: 'rgb(0, 125, 161)'
     }
 });
 

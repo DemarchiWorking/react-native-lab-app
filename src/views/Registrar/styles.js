@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFF',
         alignItems: 'center',
-        justifyContent: 'flex'
+        justifyContent: 'flex',
     },
     filter: {
         flexDirection: 'row',
@@ -45,6 +45,15 @@ const styles = StyleSheet.create({
         top: 11,
         backgroundColor: '#FFF',
         paddingHorizontal: 10
+    },
+    input: {
+        marginVertical: 4,
+        height: 50,
+        width:'70%',
+        borderWidth: 1,
+        borderRadius: 4,
+        padding: 10,
+        backgroundColor: '#fff'
     }
 
 });

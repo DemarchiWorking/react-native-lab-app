@@ -1,19 +1,47 @@
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from 'react-native';
-import Header from '../../components/Cabecalho'
-import Footer from '../../components/Rodape'
-import styles from "./styles";
-
+import React, { useEffect, useState } from "react";
+import { Text, View, Button, TouchableOpacity, ScrollView } from 'react-native';
+import Header from '../../components/Cabecalho';
+import Footer from '../../components/Rodape';
+import styles from './styles';
+import PublicacaoCard from '../../components/PublicacaoCard';
+import { useNavigation } from '@react-navigation/native';
+import { FIREBASE_APP, FIRESTORE_DB } from '../../../FirebaseConfig';
+import { collection, getDocs } from 'firebase/firestore'
 
 export default function Inicio(){
+    
+    const [publicacao, setPublicacao] = useState([])
+    const getPublicacoes = () => {
+      getDocs(collection(FIRESTORE_DB, 'publicacao')).then((querySnapshot) => {
+        const publicacaoList = [];
+        querySnapshot.forEach((doc) => {
+            publicacaoList.push({ id: doc.id, ...doc.data() });
+        });
+        setPublicacao(publicacaoList);
+      }).catch((error) => {
+        console.error('Erro ao obter documentos: ', error);
+      });
+    };
+  
+    useEffect(() => {
+            getPublicacoes();
+        }, []);
+
     const [filtro, setFiltro] = useState('todos');
-
-
+    const navigation = useNavigation();
+    const irParaPublicacao = () => {
+        navigation.navigate('Publicacao');
+      };
     return (
         <View style={styles.container}>
             <Header mostrarNotificacao={true}/>
+            <View>
+                <Button title="Ir para Publicação" onPress={irParaPublicacao} />
+            </View>
             <View style={styles.filter}>
+                
                 <TouchableOpacity onPress={() => setFiltro('todos')}>
+                    
                     <Text style={
                         filtro == 'todos' ? styles.filtroTextoAtivado : styles.filtroTextoDesativado}>
                         Todos
@@ -37,7 +65,7 @@ export default function Inicio(){
                         Mês
                     </Text>
                 </TouchableOpacity>
-
+                        
                 <TouchableOpacity  onPress={() => setFiltro('ano')}>
                     <Text style={
                             filtro == 'ano' ? styles.filtroTextoAtivado : styles.filtroTextoDesativado}>
@@ -45,8 +73,20 @@ export default function Inicio(){
                     </Text>
                 </TouchableOpacity>
             </View>
-            <Text> Bem vindo a tela HOME</Text>
+                        
+ 
+           <View style={styles.titulo}>
+            <Text style={styles.tituloTexto}> Publicações </Text>
+           </View>
+            <ScrollView style={styles.conteudo} contentContainerStyle={{alignItems: 'center'}}>
+   
+            {publicacao.map((pub) => (
+                <PublicacaoCard titulo={pub.titulo} conteudo={pub.conteudo} foto={pub.foto} dataPublicacao={pub.dataPublicacao}>
+                </PublicacaoCard>
+                ))}
+            </ScrollView>
             <Footer icon={'add'}/>
         </View>
     )
+    
 }
