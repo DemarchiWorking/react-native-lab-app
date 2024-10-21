@@ -12,8 +12,25 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        position: 'relative',
-        top: -40
+        backgroundColor: 'red',
+    },
+    lateralDireita: {
+        backgroundColor: 'red',
+        position: 'fixed',
+        width: '100%',
+        height: '150px',
+        bottom:'0px', left: '80%',
+
+
+    },
+    input: {
+        marginVertical: 4,
+        height: 50,
+        width:'100%',
+        borderWidth: 1,
+        borderRadius: 4,
+        padding: 10,
+        backgroundColor: '#fff'
     },
     image: {
         width: 80,

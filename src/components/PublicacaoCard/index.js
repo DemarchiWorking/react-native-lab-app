@@ -17,7 +17,7 @@ export default function PublicacaoCard({ titulo, foto, conteudo, dataPublicacao,
 
             </View>
         <View style={styles.cardDireito}>
-            <Text style={styles.cardData}> 07/10/2024 </Text>
+            <Text style={styles.cardData}> {dataPublicacao} </Text>
             <Text style={styles.cardHora}> 10:00 </Text>
         </View>
         </TouchableOpacity>

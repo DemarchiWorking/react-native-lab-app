@@ -6,19 +6,33 @@ import { Text, View, Image, TextInput,
 import styles from "./styles";
 import Header from "../../components/Cabecalho";
 import Footer from "../../components/Rodape";
-import icon from '../../assets/publicacao.png'
-export default function Publicacao(){
+import icon from '../../assets/publicacao.png';
+import { FIREBASE_APP, FIRESTORE_DB } from '../../../FirebaseConfig';
+import { collection, addDoc } from 'firebase/firestore'
 
-    // Função para adicionar um documento ao Firestore
-    const addPublicacao = async (publicacao) => {
-      try {
-        const docRef = await addDoc(collection(FIRESTORE_DB, 'Publicacao'), publicacao);
+export default function Publicacao(){
+    const [titulo, setTitulo] = useState('');
+    const [conteudo, setConteudo] = useState('');
+    const [foto, setFoto] = useState('');
+
+const addPublicacao = async (publicacao) => {
+    try {
+        const docRef = await addDoc(collection(FIRESTORE_DB, 'publicacao'), publicacao);
         console.log('Documento adicionado com ID: ', docRef.id);
-      } catch (e) {
+    } catch (e) {
         console.error('Erro ao adicionar documento: ', e);
-      }
     }
-    
+    };
+
+    const handleAddPublicacao = () => {
+    const publicacao = {
+        titulo,
+        conteudo,
+        dataPublicacao: new Date(),
+        foto,
+    };
+    addPublicacao(publicacao);
+    };
 
     return (
                 <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -31,17 +45,19 @@ export default function Publicacao(){
                             <TouchableOpacity style={styles.form}>
                                 
                                 <Text style={styles.label} className="text-red-500"> Título </Text>
-                                <TextInput style={styles.input} maxLength={50} placeholder=""/>
+                                <TextInput style={styles.input} value={titulo} onChangeText={setTitulo} maxLength={50} placeholder="Digite o título."></TextInput>
 
                                 <Text style={styles.label}> Foto </Text>
-                                <TextInput style={styles.input} maxLength={90} placeholder=""/>
+                                <TextInput style={styles.input} value={foto} onChangeText={setFoto}  maxLength={90} placeholder="Entre com link."/>
 
-                                <Text style={styles.label}> Texto </Text>
+                                <Text style={styles.label}> Conteúdo </Text>
                                 <TextInput style={styles.input} 
+                                value={conteudo} onChangeText={setConteudo} 
                                 maxLength={500} multiline={true}
-                                placeholder="Texto da publicacao"/>
+                                placeholder="Digite o texto da publicacao"/>
                             
                                 <View style={styles.linha}>
+                                <Button title="Postar" onPress={handleAddPublicacao}/>
                                     <View style={styles.inputLinha}>
                                         <Switch/>
                                         <Text style={styles.switchLabel}> Concluido </Text>
@@ -50,7 +66,7 @@ export default function Publicacao(){
                                     <Text style={styles.removeLabel}> EXCLUIR</Text>
                                 </TouchableOpacity>
                                 <View>
-                                <Button title="Postar" onPress={addPublicacao}/>
+                                
             
                                 </View>
                                 </View>

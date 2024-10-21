@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Text, View, Button, TouchableOpacity, ScrollView } from 'react-native';
-import Header from '../../components/Cabecalho';
-import Footer from '../../components/Rodape';
 import styles from './styles';
-import PublicacaoCard from '../../components/PublicacaoCard';
+import { Text, View, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { FIREBASE_APP, FIRESTORE_DB } from '../../../FirebaseConfig';
+import { FIREBASE_APP, FIRESTORE_DB } from '../../../../FirebaseConfig';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { useFocusEffect } from '@react-navigation/native';
-import MainTabs from "../../components/MainTabs";
+import Header from "../../Cabecalho";
+import Footer from "../../Rodape";
+import PublicacaoCard from '../../PublicacaoCard';
 
-export default function Inicio(){
-    
-    const [publicacao, setPublicacao] = useState([])
+
+export default function NavInicio()
+{
+    const [publicacao, setPublicacao] = useState([]);
     const getPublicacoes = () => {
         const q = query(collection(FIRESTORE_DB, 'publicacao'), orderBy('dataPublicacao', 'desc')); // Ordenar por dataPublicacao em ordem decrescente
         getDocs(q).then((querySnapshot) => {
@@ -93,7 +93,7 @@ export default function Inicio(){
                 ))}
      
             </ScrollView>
-            <MainTabs/>
+            <Footer icon={'add'}/>
         </View>
     )
     

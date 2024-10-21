@@ -11,28 +11,25 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import "./global.css"
 import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MinhasTabs from './MinhasTabs';
+import NavInicio from './src/components/MainTabs/NavInicio';
+import NavMenu from './src/components/MainTabs/NavMenu';
+import NavRelatorio from './src/components/MainTabs/NavRelatorio';
+import NavServicos from './src/components/MainTabs/NavServicos';
 console.disableYellowBox = true;
-
 //const Stack = createNativeStackNavigator();
-const Stack = createNativeStackNavigator();
-
+const Tab = createBottomTabNavigator();
  
 //const Routes = createAppContainer(createSwitchNavigator({Publicacao}))
-const App = () => (
-    <> 
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Inicio" component={MinhasTabs} />
-          <Stack.Screen name="Publicacao" component={Publicacao} />
-          <Stack.Screen name="Perfil" component={Perfil} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Registrar" component={Registrar} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+export default function MinhasTabs() {
+  return (      
+      <Tab.Navigator  screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Inicio" component={NavInicio} />
+        <Tab.Screen name="Relatorio" component={NavRelatorio} />
+        <Tab.Screen name="Serviços" component={NavServicos} />
+        <Tab.Screen name="Menu" component={NavMenu} />
+      </Tab.Navigator>  
   );
+}
 
-export default App;
 
 

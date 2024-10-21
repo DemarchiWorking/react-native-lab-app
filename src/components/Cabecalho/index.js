@@ -12,13 +12,16 @@ export default function Header({ mostrarNotificacao, mostrarVoltar, mostrarLogin
 {
     const navigation = useNavigation();
     const irParaInicio = () => {
-    navigation.navigate('Inicio');
-  };
+        navigation.navigate('Inicio');
+      };
+    const irParaPerfil = () => {
+        navigation.navigate('Perfil');
+      };
     return (
-        <View style={ styles.header}>
+        <View style={styles.header}>
 
-            <TouchableOpacity>
-                <Image style={ styles.logo} onPress={irParaInicio} source={logo}/>
+            <TouchableOpacity onPress={irParaPerfil}>
+                <Image style={styles.logo} source={logo}/>
             </TouchableOpacity>
             
             {mostrarNotificacao ?
