@@ -12,7 +12,7 @@ import PublicacaoCard from '../../PublicacaoCard';
 
 export default function NavInicio()
 {
-    const [publicacao, setPublicacao] = useState([]);
+    const [publicacao, setPublicacao] = useState([])
     const getPublicacoes = () => {
         const q = query(collection(FIRESTORE_DB, 'publicacao'), orderBy('dataPublicacao', 'desc')); // Ordenar por dataPublicacao em ordem decrescente
         getDocs(q).then((querySnapshot) => {
@@ -22,7 +22,7 @@ export default function NavInicio()
           });
           setPublicacao(publicacaoList);
         }).catch((error) => {
-          console.error('Erro ao obter documentos: ', error);
+          //console.error('Erro ao obter documentos: ', error);
         });
       };
       
@@ -32,19 +32,15 @@ export default function NavInicio()
           getPublicacoes();
         }, [])
     );
-      
 
     const [filtro, setFiltro] = useState('todos');
     const navigation = useNavigation();
     const irParaPublicacao = () => {
-        navigation.navigate('Publicacao');
+        navigation.navigate('CadastrarPublicacao');
       };
     return (
         <View style={styles.container}>
             <Header mostrarNotificacao={true}/>
-            <View>
-                <Button title="Ir para Publicação" onPress={irParaPublicacao} />
-            </View>
             <View style={styles.filter}>
                 
                 <TouchableOpacity onPress={() => setFiltro('todos')}>
@@ -87,14 +83,16 @@ export default function NavInicio()
            </View>
             <ScrollView style={styles.conteudo} contentContainerStyle={{alignItems: 'center'}}>
    
+          
             {publicacao.map((pub, index) => (
                 <PublicacaoCard key={pub.id || index} titulo={pub.titulo} conteudo={pub.conteudo} foto={pub.foto} dataPublicacao={pub.dataPublicacao}>
                 </PublicacaoCard>
                 ))}
-     
             </ScrollView>
             <Footer icon={'add'}/>
         </View>
     )
-    
 }
+    
+
+        

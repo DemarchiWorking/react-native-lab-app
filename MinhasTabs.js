@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 export default function MinhasTabs() {
   return (      
       <Tab.Navigator  screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Inicio" component={NavInicio} />
+        <Tab.Screen name="Publicacao" component={NavInicio} />
         <Tab.Screen name="Relatorio" component={NavRelatorio} />
         <Tab.Screen name="Serviços" component={NavServicos} />
         <Tab.Screen name="Menu" component={NavMenu} />

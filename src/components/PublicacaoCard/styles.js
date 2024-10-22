@@ -3,13 +3,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     header: {},
+    
     card: {
-        flexDirection: 'row',
         justifyContent: 'space-between',
         padding: 15,
         width: '90%',
         marginVertical: 4,
-        height: 70,
         shadowColor: 'rgb(157, 157, 157)',
         shadowOffset: {
             width: 0,
@@ -27,7 +26,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
-
+    publicacao: {
+        maxWidth: 250,
+        maxHeight: 250,
+        height: 200,
+        background:'no-repeat center',
+    },
+    
     tipoAtivo: {
         width: 50,
         height: 50
@@ -41,6 +46,10 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'space-between'
     },
+    containerPublicacao: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     cardData: {
         color: 'rgb(78, 192, 210)',
         fontWeight: 'bold',
@@ -52,6 +61,17 @@ const styles = StyleSheet.create({
     cartaoFinalizado: {
         opacity: 0.5
     },
+    reactions: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+      },
+    reactionButton: {
+        alignItems: 'center',
+      },
+    reactionText: {
+        marginTop: 5,
+        fontSize: 12,
+    }
 
 });
 

@@ -76,7 +76,7 @@ export default function Inicio(){
                 <TouchableOpacity  onPress={() => setFiltro('ano')}>
                     <Text style={
                             filtro == 'ano' ? styles.filtroTextoAtivado : styles.filtroTextoDesativado}>
-                        Ano
+                        Anoo
                     </Text>
                 </TouchableOpacity>
             </View>

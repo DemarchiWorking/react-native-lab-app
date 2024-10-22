@@ -12,10 +12,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        backgroundColor: 'red',
     },
     lateralDireita: {
-        backgroundColor: 'red',
         position: 'fixed',
         width: '100%',
         height: '150px',

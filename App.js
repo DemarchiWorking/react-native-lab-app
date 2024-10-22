@@ -24,7 +24,7 @@ const App = () => (
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Inicio" component={MinhasTabs} />
-          <Stack.Screen name="Publicacao" component={Publicacao} />
+          <Stack.Screen name="CadastrarPublicacao" component={Publicacao} />
           <Stack.Screen name="Perfil" component={Perfil} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Registrar" component={Registrar} />
