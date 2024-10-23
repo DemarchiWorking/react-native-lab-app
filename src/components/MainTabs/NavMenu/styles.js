@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     row: {
         justifyContent: 'space-between',
     },
+    titulo : {
+      fontSize: 17,
+    },
     card: {
           flexDirection: 'row',
           alignItems: 'center',

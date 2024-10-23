@@ -12,20 +12,22 @@ import perfil from '../../../assets/perfil-vazio.jpg';
 export default function NavMenu()
 {
     const DATA = [
-        { id: '1', title: 'Publicações' },
-        { id: '2', title: 'Negócios' },
-        { id: '3', title: 'Serviços' },
-        { id: '4', title: 'Produtos' },
-        { id: '5', title: 'Vagas' },
-        { id: '6', title: 'Usuarios' }
+        { id: '1', titulo: 'Publicações' },
+        { id: '2', titulo: 'Negócios' },
+        { id: '3', titulo: 'Serviços' },
+        { id: '4', titulo: 'Produtos' },
+        { id: '5', titulo: 'Vagas' },
+        { id: '6', titulo: 'Usuarios' },
+        { id: '7', titulo: 'Perfil' },
+        { id: '8', titulo: 'Configurações' }
     ];
 
-    const Item = ({ title }) => (
+    const Item = ({ titulo }) => (
         <View style={styles.card2}>
-          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.titulo}>{titulo}</Text>
         </View>
       );  
-      const renderItem = ({ item }) => <Item title={item.title} />;
+      const renderItem = ({ item }) => <Item titulo={item.titulo} />;
 
     return (
     <View style={styles.container}>

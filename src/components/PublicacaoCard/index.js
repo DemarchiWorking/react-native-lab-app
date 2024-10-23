@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'; 
 
 import iconDefault from '../../assets/blog.png'
 import fotoPublicacao from '../../assets/rdx.jpg'

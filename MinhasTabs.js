@@ -14,7 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavInicio from './src/components/MainTabs/NavInicio';
 import NavMenu from './src/components/MainTabs/NavMenu';
 import NavRelatorio from './src/components/MainTabs/NavRelatorio';
-import NavServicos from './src/components/MainTabs/NavServicos';
+import NavNegocios from './src/components/MainTabs/NavNegocios';
 console.disableYellowBox = true;
 //const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -25,7 +25,7 @@ export default function MinhasTabs() {
       <Tab.Navigator  screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Publicacao" component={NavInicio} />
         <Tab.Screen name="Relatorio" component={NavRelatorio} />
-        <Tab.Screen name="Serviços" component={NavServicos} />
+        <Tab.Screen name="Serviços" component={NavNegocios} />
         <Tab.Screen name="Menu" component={NavMenu} />
       </Tab.Navigator>  
   );

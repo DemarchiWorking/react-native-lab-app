@@ -14,8 +14,11 @@ export default function Header({ mostrarNotificacao, mostrarVoltar, mostrarLogin
     const irParaInicio = () => {
         navigation.navigate('Inicio');
       };
-    const irParaPerfil = () => {
+      const irParaPerfil = () => {
         navigation.navigate('Perfil');
+      };
+      const irParaNotificacao = () => {
+        navigation.navigate('Notificacao');
       };
     return (
         <View style={styles.header}>
@@ -25,7 +28,7 @@ export default function Header({ mostrarNotificacao, mostrarVoltar, mostrarLogin
             </TouchableOpacity>
             
             {mostrarNotificacao ?
-                <TouchableOpacity style={styles.notificacao}>
+                <TouchableOpacity onPress={irParaNotificacao} style={styles.notificacao}>
                     <Image style={styles.sino} source={sino}/>
                     <View style={styles.circulo}>
                         <Text style={ styles.notificacaoText}> 3 </Text>
